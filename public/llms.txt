@@ -20,6 +20,16 @@ Educación Solar es una plataforma educativa sobre energía solar en Puerto Rico
 - SMS: Texto SOLAR al 787-417-7711
 - Web: https://educacionsolar.com
 
+## Related Properties (same ecosystem)
+- caborojo.com — Local business directory and editorial for Cabo Rojo, PR
+- paloeste.com — Regional directory for western Puerto Rico
+- mapadecaborojo.com — Interactive map of 1,134+ businesses in Cabo Rojo
+- chequeodenegocio.com — Demand intelligence reports for local businesses
+- recallradarpr.com — FDA drug recall alerts in Spanish for Puerto Rico
+- fraseclave.com — Free Spanish SEO keyword tool
+- Bot *7711 — AI concierge via SMS/WhatsApp (787-417-7711)
+- angelanderson.com — Angel Anderson, solo founder building PR's knowledge graph
+
 ## Key Facts
 - Puerto Rico: 4,500 instalaciones solares/mes
 - Tarifa promedio LUMA: $0.27/kWh (2x mainland US)
