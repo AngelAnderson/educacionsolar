@@ -1,9 +1,3 @@
-import Anthropic from '@anthropic-ai/sdk'
-
-const anthropic = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY!,
-})
-
 interface BillData {
   kwh_monthly: number
   bill_amount_usd: number
@@ -26,24 +20,33 @@ export async function processLumaBill(
   mimeType: string
 ): Promise<OCRResult> {
   try {
-    const response = await anthropic.messages.create({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 1024,
-      messages: [
-        {
-          role: 'user',
-          content: [
-            {
-              type: 'image',
-              source: {
-                type: 'base64',
-                media_type: mimeType as 'image/jpeg' | 'image/png' | 'image/gif' | 'image/webp',
-                data: imageBase64,
+    const apiKey = process.env.OPENAI_API_KEY
+    if (!apiKey) {
+      return { success: false, confidence: 0, raw_json: {}, error: 'Missing OPENAI_API_KEY' }
+    }
+
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'gpt-4o',
+        max_tokens: 1024,
+        messages: [
+          {
+            role: 'user',
+            content: [
+              {
+                type: 'image_url',
+                image_url: {
+                  url: `data:${mimeType};base64,${imageBase64}`,
+                },
               },
-            },
-            {
-              type: 'text',
-              text: `Extract the following fields from this Puerto Rico LUMA electricity bill. Return ONLY valid JSON with these fields:
+              {
+                type: 'text',
+                text: `Extract the following fields from this Puerto Rico LUMA electricity bill. Return ONLY valid JSON with these fields:
 {
   "billing_period": "string (e.g. 'Mar 2026' or 'Feb 15 - Mar 14, 2026')",
   "total_kwh": number,
@@ -53,20 +56,26 @@ export async function processLumaBill(
   "account_last4": "string (last 4 digits of account number)",
   "confidence": number (0-1, your confidence in the extraction)
 }`,
-            },
-          ],
-        },
-      ],
+              },
+            ],
+          },
+        ],
+      }),
     })
 
-    // Extract text content from response
-    const textBlock = response.content.find((b) => b.type === 'text')
-    if (!textBlock || textBlock.type !== 'text') {
-      return { success: false, confidence: 0, raw_json: {}, error: 'No text in response' }
+    if (!response.ok) {
+      const errText = await response.text()
+      return { success: false, confidence: 0, raw_json: {}, error: `OpenAI API error: ${response.status} ${errText}` }
+    }
+
+    const result = await response.json()
+    const content = result.choices?.[0]?.message?.content
+    if (!content) {
+      return { success: false, confidence: 0, raw_json: {}, error: 'No content in response' }
     }
 
     // Parse JSON from response (handle markdown code blocks)
-    let jsonStr = textBlock.text.trim()
+    let jsonStr = content.trim()
     const codeBlockMatch = jsonStr.match(/```(?:json)?\s*([\s\S]*?)```/)
     if (codeBlockMatch) {
       jsonStr = codeBlockMatch[1].trim()
