@@ -63,6 +63,13 @@ export default function RootLayout({
                   "@type": "Place",
                   name: "Puerto Rico",
                 },
+                sameAs: [
+                  "https://caborojo.com",
+                  "https://paloeste.com",
+                  "https://mapadecaborojo.com",
+                  "https://angelanderson.com",
+                  "https://chequeodenegocio.com",
+                ],
               },
             }),
           }}
@@ -94,6 +101,12 @@ export default function RootLayout({
               >
                 Guías
               </Link>
+              <Link
+                href="/instaladores"
+                className="hover:text-amber-300 transition-colors"
+              >
+                Instaladores
+              </Link>
             </div>
           </div>
         </nav>
@@ -109,6 +122,12 @@ export default function RootLayout({
               <a href="sms:7874177711?body=SOLAR" className="underline">
                 787-417-7711
               </a>
+            </p>
+            <p className="text-white/50 text-xs mt-2">
+              Un proyecto de{" "}
+              <a href="https://caborojo.com" className="underline hover:text-white/80">CaboRojo.com</a>
+              {" · "}
+              <a href="https://angelanderson.com" className="underline hover:text-white/80">Angel Anderson</a>
             </p>
           </div>
         </footer>
