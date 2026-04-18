@@ -92,7 +92,7 @@ export default function CursoPage() {
       {/* FAQ */}
       <section className="py-16 px-4">
         <div className="max-w-xl mx-auto">
-          <h2 className="text-2xl font-bold text-[#065f46] text-center mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-[#065f46] mb-8">
             Preguntas frecuentes
           </h2>
           <div className="space-y-6">

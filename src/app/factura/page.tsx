@@ -144,30 +144,48 @@ export default function FacturaPage() {
 
         {/* Upload zone */}
         {(status === "idle" || status === "error") && (
-          <div
-            onDragOver={(e) => e.preventDefault()}
-            onDrop={handleDrop}
-            onClick={() => inputRef.current?.click()}
-            className="mt-8 border-2 border-dashed border-[#065f46]/40 rounded-xl p-12 text-center cursor-pointer hover:border-[#065f46] transition-colors"
-          >
-            <p className="text-lg font-medium text-[#065f46]">
-              Arrastra tu factura aquí
-            </p>
-            <p className="mt-1 text-sm text-gray-500">
-              o toca para seleccionar foto / PDF
-            </p>
-            <input
-              ref={inputRef}
-              type="file"
-              accept="image/*,application/pdf"
-              capture="environment"
-              className="hidden"
-              onChange={(e) => {
-                const f = e.target.files?.[0];
-                if (f) handleFile(f);
-              }}
-            />
-          </div>
+          <>
+            <div
+              onDragOver={(e) => e.preventDefault()}
+              onDrop={handleDrop}
+              onClick={() => inputRef.current?.click()}
+              className="mt-8 border-2 border-dashed border-[#065f46]/40 rounded-xl p-12 text-center cursor-pointer hover:border-[#065f46] transition-colors"
+            >
+              <p className="text-lg font-medium text-[#065f46]">
+                Arrastra tu factura aquí
+              </p>
+              <p className="mt-1 text-sm text-gray-500">
+                o toca para seleccionar foto / PDF
+              </p>
+              <input
+                ref={inputRef}
+                type="file"
+                accept="image/*,application/pdf"
+                capture="environment"
+                className="hidden"
+                onChange={(e) => {
+                  const f = e.target.files?.[0];
+                  if (f) handleFile(f);
+                }}
+              />
+            </div>
+
+            {/* Trust signals */}
+            <div className="mt-8 space-y-3 text-sm text-gray-600">
+              <div className="flex items-start gap-3">
+                <span className="text-green-600 mt-0.5">🔒</span>
+                <p><strong>Tu información es 100% privada.</strong> No guardamos tu factura ni la compartimos con nadie.</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-green-600 mt-0.5">⚡</span>
+                <p><strong>Resultado en 30 segundos.</strong> IA analiza tu consumo y calcula 3 escenarios de ahorro.</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-green-600 mt-0.5">✓</span>
+                <p><strong>Sin compromiso.</strong> No te vamos a llamar, ni vender nada, ni compartir tu número.</p>
+              </div>
+            </div>
+          </>
         )}
 
         {error && (

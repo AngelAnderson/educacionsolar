@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
+import { MobileNav } from "./mobile-nav";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -74,40 +75,41 @@ export default function RootLayout({
             }),
           }}
         />
-        <nav className="bg-[#065f46] text-white">
+        <nav className="bg-[#065f46] text-white relative">
           <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
             <Link href="/" className="text-xl font-bold tracking-tight">
               Educación Solar
             </Link>
-            <div className="flex gap-6 text-sm font-medium">
-              <Link href="/" className="hover:text-amber-300 transition-colors">
+            <div className="hidden md:flex gap-1 text-sm font-medium">
+              <Link href="/" className="hover:text-amber-300 transition-colors px-3 py-2 rounded-md">
                 Inicio
               </Link>
               <Link
                 href="/factura"
-                className="hover:text-amber-300 transition-colors"
+                className="hover:text-amber-300 transition-colors px-3 py-2 rounded-md"
               >
                 Analiza tu Factura
               </Link>
               <Link
                 href="/curso"
-                className="hover:text-amber-300 transition-colors"
+                className="hover:text-amber-300 transition-colors px-3 py-2 rounded-md"
               >
                 Curso Gratis
               </Link>
               <Link
                 href="/guias"
-                className="hover:text-amber-300 transition-colors"
+                className="hover:text-amber-300 transition-colors px-3 py-2 rounded-md"
               >
                 Guías
               </Link>
               <Link
                 href="/instaladores"
-                className="hover:text-amber-300 transition-colors"
+                className="hover:text-amber-300 transition-colors px-3 py-2 rounded-md"
               >
                 Instaladores
               </Link>
             </div>
+            <MobileNav />
           </div>
         </nav>
 
