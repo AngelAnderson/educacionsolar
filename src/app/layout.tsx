@@ -16,8 +16,20 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Educación Solar — La verdad sobre tu factura LUMA",
-  description:
-    "Sube tu factura LUMA y te decimos la verdad: ¿te conviene solar? Sin venderte nada.",
+  description: "Sube tu factura LUMA y te decimos la verdad: ¿te conviene solar? Sin venderte nada.",
+  openGraph: {
+    title: "Educación Solar — La verdad sobre tu factura LUMA",
+    description: "Sube tu factura LUMA y te decimos la verdad: ¿te conviene solar? Sin venderte nada.",
+    url: "https://educacionsolar.com",
+    siteName: "Educación Solar",
+    locale: "es_PR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Educación Solar — ¿Te conviene solar en PR?",
+    description: "Analiza tu factura LUMA con IA. 3 escenarios de ahorro. Gratis. Sin vendedores.",
+  },
 };
 
 export default function RootLayout({

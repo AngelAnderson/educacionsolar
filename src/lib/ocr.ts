@@ -1,3 +1,5 @@
+import { municipalities } from './municipalities';
+
 interface BillData {
   kwh_monthly: number
   bill_amount_usd: number
@@ -25,8 +27,12 @@ export async function processLumaBill(
       return { success: false, confidence: 0, raw_json: {}, error: 'Missing OPENAI_API_KEY' }
     }
 
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 30000);
+
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
+      signal: controller.signal,
       headers: {
         'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
@@ -63,6 +69,8 @@ export async function processLumaBill(
       }),
     })
 
+    clearTimeout(timeout);
+
     if (!response.ok) {
       const errText = await response.text()
       return { success: false, confidence: 0, raw_json: {}, error: `OpenAI API error: ${response.status} ${errText}` }
@@ -82,6 +90,18 @@ export async function processLumaBill(
     }
 
     const parsed = JSON.parse(jsonStr)
+
+    // Validate municipality against known PR municipalities
+    let municipality = parsed.municipality || 'Puerto Rico';
+    const normMuni = (s: string) => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    const exactMatch = municipalities.find(m => normMuni(m) === normMuni(municipality));
+    if (exactMatch) {
+      municipality = exactMatch;
+    } else {
+      // Fuzzy: find closest match
+      const closest = municipalities.find(m => normMuni(m).includes(normMuni(municipality)) || normMuni(municipality).includes(normMuni(m)));
+      municipality = closest || 'Puerto Rico';
+    }
 
     // Validate ranges
     if (parsed.total_kwh < 50 || parsed.total_kwh > 10000) {
@@ -107,7 +127,7 @@ export async function processLumaBill(
         kwh_monthly: parsed.total_kwh,
         bill_amount_usd: parsed.total_amount_usd,
         rate_per_kwh: parsed.rate_per_kwh,
-        municipality: parsed.municipality,
+        municipality,
         billing_period: parsed.billing_period,
         account_last4: parsed.account_last4,
       },
@@ -115,6 +135,9 @@ export async function processLumaBill(
       raw_json: parsed,
     }
   } catch (err) {
+    if (err instanceof Error && err.name === 'AbortError') {
+      return { success: false, confidence: 0, raw_json: {}, error: 'El análisis tomó demasiado tiempo. Intenta de nuevo.' }
+    }
     return {
       success: false,
       confidence: 0,

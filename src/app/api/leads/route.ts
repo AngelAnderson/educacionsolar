@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 
+const leadLimitMap = new Map<string, number>();
+const MAX_LEADS_PER_BILL = 3;
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -22,6 +25,27 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
+
+    // Validate phone format (PR numbers)
+    if (phone) {
+      const cleanPhone = phone.replace(/[\s\-\(\)\.]/g, '');
+      if (!/^(\+?1)?(787|939)\d{7}$/.test(cleanPhone)) {
+        return NextResponse.json(
+          { success: false, error: "Formato de teléfono no válido. Usa un número de PR (787 o 939)." },
+          { status: 400 }
+        );
+      }
+    }
+
+    // Rate limit per bill_id
+    const count = leadLimitMap.get(bill_id) || 0;
+    if (count >= MAX_LEADS_PER_BILL) {
+      return NextResponse.json(
+        { success: false, error: "Ya procesamos esta factura. Si necesitas ayuda, texto SOLAR al 787-417-7711." },
+        { status: 429 }
+      );
+    }
+    leadLimitMap.set(bill_id, count + 1);
 
     const { supabaseAdmin } = await import("@/lib/supabase");
 

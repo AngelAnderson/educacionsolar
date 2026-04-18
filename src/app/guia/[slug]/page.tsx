@@ -192,6 +192,21 @@ export default async function GuiaPage({
 
   return (
     <main className="max-w-3xl mx-auto px-4 py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Article',
+            headline: guide.title,
+            description: guide.description,
+            author: { '@type': 'Organization', name: 'Educación Solar' },
+            publisher: { '@type': 'Organization', name: 'Educación Solar', url: 'https://educacionsolar.com' },
+            datePublished: '2026-04-18',
+            inLanguage: 'es',
+          }),
+        }}
+      />
       <nav className="mb-8 text-sm text-gray-500">
         <Link href="/" className="hover:text-emerald-700">
           Inicio

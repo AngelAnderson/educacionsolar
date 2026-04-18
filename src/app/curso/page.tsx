@@ -30,6 +30,20 @@ const faqs = [
 export default function CursoPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqs.map(f => ({
+              "@type": "Question",
+              name: f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.a },
+            })),
+          }),
+        }}
+      />
       {/* Hero */}
       <section className="bg-[#ecfdf5] py-20 px-4">
         <div className="max-w-2xl mx-auto text-center">

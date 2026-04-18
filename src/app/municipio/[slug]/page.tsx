@@ -40,6 +40,20 @@ export default async function MunicipioPage({
 
   return (
     <main className="max-w-3xl mx-auto px-4 py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: `Análisis Solar en ${name}`,
+            description: `Analiza tu factura LUMA y descubre cuánto puedes ahorrar con energía solar en ${name}, Puerto Rico.`,
+            provider: { "@type": "Organization", name: "Educación Solar", url: "https://educacionsolar.com" },
+            areaServed: { "@type": "City", name: name, containedInPlace: { "@type": "AdministrativeArea", name: "Puerto Rico" } },
+            serviceType: "Solar Energy Analysis",
+          }),
+        }}
+      />
       <nav className="mb-8 text-sm text-gray-500">
         <Link href="/" className="hover:text-emerald-700">Inicio</Link>
         {" → "}

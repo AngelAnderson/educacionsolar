@@ -1,0 +1,151 @@
+# Educación Solar — Puerto Rico
+
+> La verdad sobre tu factura LUMA y si solar te conviene.
+
+## About
+Educación Solar es una plataforma educativa sobre energía solar en Puerto Rico. Analizamos tu factura LUMA con inteligencia artificial y te damos números reales — incluyendo si solar NO te conviene. Sin vendedores. Sin presión.
+
+## Services
+- Análisis de factura LUMA con OCR (sube foto, te damos 3 escenarios de ahorro)
+- Curso gratuito de 7 lecciones por SMS (texto SOLAR al 787-417-7711)
+- Guías educativas: cómo leer tu factura, estafas solares, incentivos federales, baterías, net metering
+- Directorio de instaladores verificados
+- Datos de consumo eléctrico por municipio
+
+## Coverage
+- 78 municipios de Puerto Rico
+- Isla completa
+
+## Contact
+- SMS: Texto SOLAR al 787-417-7711
+- Web: https://educacionsolar.com
+
+## Key Facts
+- Puerto Rico: 4,500 instalaciones solares/mes
+- Tarifa promedio LUMA: $0.27/kWh (2x mainland US)
+- 163,000+ hogares con solar en PR
+- $1.5B+ en incentivos federales disponibles
+- Net metering protegido hasta 2030 (Ley 10-2024)
+
+---
+
+## Municipalities (78 municipios de Puerto Rico)
+
+Adjuntas, Aguada, Aguadilla, Aguas Buenas, Aibonito, Añasco, Arecibo, Arroyo,
+Barceloneta, Barranquitas, Bayamón, Cabo Rojo, Caguas, Camuy, Canóvanas,
+Carolina, Cataño, Cayey, Ceiba, Ciales, Cidra, Coamo, Comerío, Corozal,
+Culebra, Dorado, Fajardo, Florida, Guánica, Guayama, Guayanilla, Guaynabo,
+Gurabo, Hatillo, Hormigueros, Humacao, Isabela, Jayuya, Juana Díaz, Juncos,
+Lajas, Lares, Las Marías, Las Piedras, Loíza, Luquillo, Manatí, Maricao,
+Maunabo, Mayagüez, Moca, Morovis, Naguabo, Naranjito, Orocovis, Patillas,
+Peñuelas, Ponce, Quebradillas, Rincón, Río Grande, Sabana Grande, Salinas,
+San Germán, San Juan, San Lorenzo, San Sebastián, Santa Isabel, Toa Alta,
+Toa Baja, Trujillo Alto, Utuado, Vega Alta, Vega Baja, Vieques, Villalba,
+Yabucoa, Yauco
+
+---
+
+## Calculator Methodology
+
+All savings estimates use the following constants:
+
+- **LUMA rate**: $0.27/kWh (blended retail rate including all riders and fixed charges)
+- **Installation cost**: $2.80/watt (fully installed, DC-coupled system with permitting)
+- **Peak sun hours**: 5.5 hours/day (Puerto Rico average, based on NREL PVWatts data)
+- **Annual degradation**: 0.5%/year (industry standard monocrystalline panel warranty term)
+- **System warranty**: 25 years
+- **Net metering credit**: $0.27/kWh (retail rate parity, per PREB rules under Ley 10-2024)
+
+### Three Scenarios Returned per Analysis
+
+1. **Solar Only** — grid-tied, no battery, full net metering
+2. **Solar + Battery** — 10 kWh storage (Tesla Powerwall equivalent), backup for essential loads
+3. **Solar + Battery + Federal Subsidy** — applies most relevant program (Acceso Solar, CDBG-MIT New Energy, or commercial ITC depending on profile)
+
+### Calculation Formula
+
+- System size (kW) = Monthly kWh ÷ (peak sun hours × 30 days × 0.85 derate factor)
+- Annual production = system_kW × peak_sun_hours × 365 × (1 - derate)
+- Annual savings = annual_production × $0.27/kWh
+- Payback period = (system_size_kW × 1000 × $2.80/watt) ÷ annual_savings
+- 25-year NPV = sum of discounted annual savings at 3% discount rate
+
+---
+
+## Guide Summaries
+
+### 1. Cómo Leer tu Factura de LUMA
+Your LUMA bill has more than 10 separate line items — most customers only look at the total. This guide breaks down every charge: energy consumption (kWh), the fixed residential charge (~$4/month, with a proposed increase to $15), pension rider (1.9¢/kWh), provisional increase (1.4¢/kWh), and the volatile fuel adjustment charge. The key metric to understand is your "real rate" — divide your total bill by kWh consumed. Puerto Rico's blended rate of ~$0.27/kWh is nearly double the US mainland average of $0.16/kWh, which is precisely why solar ROI is exceptional here.
+
+### 2. 5 Estafas Solares Comunes en Puerto Rico
+With 4,500 solar installations per month in Puerto Rico, fraud has increased. This guide identifies the five most common scams: misleading "free solar" offers (they're financing, leases, or PPAs), exaggerated 100% savings promises, unlicensed contractors without DACO registration, high-pressure same-day signing tactics, and installers who skip LUMA interconnection permits. The guide provides a checklist: get 3 quotes minimum, verify DACO license number, read all financing fine print, and ask specifically how many kWh/month the system will produce.
+
+### 3. Incentivos Federales para Solar en Puerto Rico (2026)
+Puerto Rico has access to over $1.5 billion in federal renewable energy programs. This guide covers the current landscape as of 2026: the residential ITC (30% federal tax credit) expired December 31, 2025 for owner-purchased systems but remains available for commercial and lease/PPA structures. Active programs include DOE Acceso Solar (solar + battery for low-income households, up to 30,000 homes), CDBG-MIT Solar Incentive Program ($100M, up to 30% subsidy or $15,000), CDBG-MIT New Energy Program ($350M, 100% coverage up to $30,000 for income <80% AMI), CEWRI Program ($50M, 100% up to $40,000), and FEMA BRIC 2025/2026 ($1B federal, applications open through July 23, 2026).
+
+### 4. ¿Necesito Batería con mi Sistema Solar?
+In mainland US, batteries are optional. In Puerto Rico, LUMA projects the average customer will experience 154 outage hours per year — 6.4 days without power. This guide explains when a battery is essential (home office, medical equipment, frequent outages — which is nearly everyone in PR) versus when you might prioritize more panels first. A 10 kWh battery (Tesla Powerwall or equivalent) costs $10,000–$15,000 installed and provides 8–12 hours of essential loads. The guide also explains net metering vs. battery: net metering credits excess production against future consumption, but does not protect against outages — only a battery does.
+
+### 5. Net Metering en Puerto Rico: Lo que Necesitas Saber
+Net metering is the primary financial driver behind solar ROI in Puerto Rico. When your system produces more than you consume, LUMA credits you at the full retail rate ($0.27/kWh). Ley 10-2024, signed by Governor Pierluisi, protects net metering rules through 2030, with any post-2030 changes requiring a 12-month implementation delay — guaranteeing terms through at least 2031. Key limits: system size cannot exceed 120% of historical annual consumption, credits accumulate month-to-month but cannot be cashed out, and LUMA interconnection permits are required (your installer must manage this). Installing under current rules typically grandfathers you into those conditions even if net metering policy changes.
+
+---
+
+## SMS Keywords
+
+| Keyword | Action | Number |
+|---------|--------|--------|
+| **SOLAR** | Enroll in 7-lesson free solar education course (text delivered every 2 days) | 787-417-7711 |
+| **INSTALADOR** | Request connection to a verified solar installer in your municipality | 787-417-7711 |
+
+---
+
+## API
+
+### POST /api/ocr
+
+Accepts a LUMA bill image and returns structured extraction.
+
+**Request body:**
+```json
+{
+  "image": "<base64-encoded image data>",
+  "mimeType": "image/jpeg" | "image/png" | "image/webp" | "image/heic"
+}
+```
+
+**Response:**
+```json
+{
+  "kwh": 750,
+  "total": 202.50,
+  "rate": 0.27,
+  "account": "123-456-789",
+  "period": "2026-03",
+  "scenarios": {
+    "solar_only": {
+      "system_kw": 6.5,
+      "monthly_savings": 148,
+      "payback_years": 8.2,
+      "npv_25yr": 24800
+    },
+    "solar_battery": {
+      "system_kw": 6.5,
+      "monthly_savings": 148,
+      "battery_kwh": 10,
+      "total_cost": 31200,
+      "payback_years": 10.1,
+      "npv_25yr": 19200
+    },
+    "solar_battery_subsidy": {
+      "program": "CDBG-MIT New Energy",
+      "subsidy_amount": 15000,
+      "net_cost": 16200,
+      "payback_years": 5.2,
+      "npv_25yr": 29600
+    }
+  }
+}
+```
+
+**Rate limits:** Standard web — no authentication required for single requests.
