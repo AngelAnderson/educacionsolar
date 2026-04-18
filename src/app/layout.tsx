@@ -30,6 +30,30 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <script
+          type="application/ld+json"
+          // Safe: hardcoded server-side JSON-LD, no user input
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "Educación Solar",
+              url: "https://educacionsolar.com",
+              description:
+                "Plataforma educativa sobre energía solar en Puerto Rico. Analiza tu factura LUMA con IA.",
+              inLanguage: "es",
+              publisher: {
+                "@type": "Organization",
+                name: "Educación Solar",
+                url: "https://educacionsolar.com",
+                areaServed: {
+                  "@type": "Place",
+                  name: "Puerto Rico",
+                },
+              },
+            }),
+          }}
+        />
         <nav className="bg-[#065f46] text-white">
           <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
             <Link href="/" className="text-xl font-bold tracking-tight">

@@ -1,0 +1,28 @@
+# Educación Solar — Puerto Rico
+
+> La verdad sobre tu factura LUMA y si solar te conviene.
+
+## About
+Educación Solar es una plataforma educativa sobre energía solar en Puerto Rico. Analizamos tu factura LUMA con inteligencia artificial y te damos números reales — incluyendo si solar NO te conviene. Sin vendedores. Sin presión.
+
+## Services
+- Análisis de factura LUMA con OCR (sube foto, te damos 3 escenarios de ahorro)
+- Curso gratuito de 7 lecciones por SMS (texto SOLAR al 787-417-7711)
+- Guías educativas: cómo leer tu factura, estafas solares, incentivos federales, baterías, net metering
+- Directorio de instaladores verificados
+- Datos de consumo eléctrico por municipio
+
+## Coverage
+- 78 municipios de Puerto Rico
+- Isla completa
+
+## Contact
+- SMS: Texto SOLAR al 787-417-7711
+- Web: https://educacionsolar.com
+
+## Key Facts
+- Puerto Rico: 4,500 instalaciones solares/mes
+- Tarifa promedio LUMA: $0.27/kWh (2x mainland US)
+- 163,000+ hogares con solar en PR
+- $1.5B+ en incentivos federales disponibles
+- Net metering protegido hasta 2030 (Ley 10-2024)
