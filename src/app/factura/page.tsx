@@ -3,31 +3,41 @@
 import { useState, useRef, useCallback } from "react";
 
 interface SavingsScenario {
-  label: string;
-  monthly_savings: number;
-  annual_savings: number;
+  name: string;
+  monthly_savings_usd: number;
+  annual_savings_usd: number;
   payback_years: number;
+  offset_pct: number;
+  estimated_system_cost: number;
+  twenty_five_year_savings: number;
 }
 
 interface OcrResult {
   municipality: string;
-  kwh: number;
-  bill_amount: number;
+  kwh_monthly: number;
+  bill_amount_usd: number;
+  rate_per_kwh: number;
 }
 
 interface ApiResponse {
   success: boolean;
   data: OcrResult;
-  savings: SavingsScenario[];
+  savings: { scenarios: SavingsScenario[] };
   confidence: number;
 }
 
 type Status = "idle" | "preview" | "loading" | "results" | "error";
 
 const scenarioColors: Record<string, string> = {
-  Pesimista: "border-red-300 bg-red-50",
-  Realista: "border-green-300 bg-green-50",
-  Optimista: "border-amber-300 bg-amber-50",
+  Pessimistic: "border-red-300 bg-red-50",
+  Realistic: "border-green-300 bg-green-50",
+  Optimistic: "border-amber-300 bg-amber-50",
+};
+
+const scenarioLabels: Record<string, string> = {
+  Pessimistic: "Pesimista",
+  Realistic: "Realista",
+  Optimistic: "Optimista",
 };
 
 export default function FacturaPage() {
@@ -199,12 +209,12 @@ export default function FacturaPage() {
                 </div>
                 <div>
                   <p className="text-gray-500">Consumo</p>
-                  <p className="font-semibold">{result.data.kwh} kWh</p>
+                  <p className="font-semibold">{result.data.kwh_monthly} kWh</p>
                 </div>
                 <div>
                   <p className="text-gray-500">Total factura</p>
                   <p className="font-semibold">
-                    ${result.data.bill_amount.toFixed(2)}
+                    ${result.data.bill_amount_usd.toFixed(2)}
                   </p>
                 </div>
               </div>
@@ -215,19 +225,19 @@ export default function FacturaPage() {
               Tus escenarios de ahorro
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {result.savings.map((s) => (
+              {result.savings.scenarios.map((s) => (
                 <div
-                  key={s.label}
-                  className={`border-2 rounded-xl p-6 text-center ${scenarioColors[s.label] || "border-gray-200"}`}
+                  key={s.name}
+                  className={`border-2 rounded-xl p-6 text-center ${scenarioColors[s.name] || "border-gray-200"}`}
                 >
                   <p className="text-sm font-semibold uppercase tracking-wide text-gray-600">
-                    {s.label}
+                    {scenarioLabels[s.name] || s.name}
                   </p>
                   <p className="mt-3 text-2xl font-bold text-[#065f46]">
-                    ${s.monthly_savings.toFixed(0)}/mes
+                    ${s.monthly_savings_usd.toFixed(0)}/mes
                   </p>
                   <p className="text-sm text-gray-600">
-                    ${s.annual_savings.toFixed(0)}/año
+                    ${s.annual_savings_usd.toFixed(0)}/año
                   </p>
                   <p className="mt-2 text-xs text-gray-500">
                     Se paga en ~{s.payback_years.toFixed(1)} años
