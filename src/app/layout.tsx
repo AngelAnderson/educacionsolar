@@ -26,13 +26,11 @@ export const metadata: Metadata = {
     siteName: "Educación Solar",
     locale: "es_PR",
     type: "website",
-    images: [{ url: "/og-image.svg", width: 1200, height: 630, alt: "Educación Solar PR" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Educación Solar — ¿Te conviene solar en PR?",
     description: "Analiza tu factura LUMA con IA. 3 escenarios de ahorro. Gratis. Sin vendedores.",
-    images: ["/og-image.svg"],
   },
 };
 
