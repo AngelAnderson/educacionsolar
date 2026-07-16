@@ -36,6 +36,8 @@ A solar education platform for Puerto Rico that acquires the largest independent
 | Guías Index | `/guias` | Static | Index of 5 educational guides |
 | Guía Detail | `/guia/[slug]` | SSG (5) | Educational articles (factura, estafas, incentivos, baterías, net metering) |
 | Municipio | `/municipio/[slug]` | SSG (78) | Programmatic SEO pages for all PR municipalities |
+| El Récord | `/datos` | Static | Solar record of PR: verified numbers + DICEN/RÉCORD contradictions + Mientras Tanto (shipped 2026-07-16) |
+| Casos Reales | `/casos` | Static | Two real family cases (cash 2021 / lease retiree) + la fórmula + 7 preguntas antes de firmar (shipped 2026-07-16) |
 | Sitemap | `/sitemap.xml` | Dynamic | 86 URLs |
 | OCR API | `/api/ocr` | Serverless | GPT-4o Vision OCR → validate → save to Supabase |
 | Leads API | `/api/leads` | Serverless | Assign lead to verified installer |
@@ -81,7 +83,7 @@ Files: `Vecinoai/supabase/functions/twilio-webhook/solar-tutor.ts`, `intent.ts`,
 
 ### Savings Calculator Constants (PR-specific)
 
-- LUMA average rate: $0.27/kWh
+- LUMA average rate: $0.27/kWh (residencial ~24-28¢ según EIA/PREB 2026; cargo fijo $8/mes desde jul 2026, ~$16 en 2028 — NEPR-AP-2023-0003)
 - Installed solar cost: $2.80/watt
 - Peak sun hours: 5.5/day
 - Panel degradation: 0.5%/year
@@ -130,6 +132,22 @@ Domain `educacionsolar.com` needs A records pointing to Vercel:
 - `www` → `76.76.21.21`
 
 Or change nameservers to `ns1.vercel-dns.com` + `ns2.vercel-dns.com`.
+
+## Positioning v2 (2026-07-16) — la cara solar del substrato cívico
+
+educacionsolar.com dejó de ser "sitio de educación + lead-gen" y opera como **récord vertical** (mismo estándar PuertoRicoSinFiltros: número + fecha + fuente primaria + link, contradicciones DICEN/RÉCORD, Mientras Tanto escudo/palanca, correcciones públicas).
+
+**Hechos que anclan el récord (verificados 2026-07-16):**
+- Cargo fijo residencial: $4 → $8 (vigente 1-jul-2026) → ~$16 en 2028. Caso PREB NEPR-AP-2023-0003, resolución 15-abr-2026.
+- Crédito federal 25D (30% residencial) murió 31-dic-2025 (P.L. 119-21). 48E (lease/PPA) vivo con reloj: en servicio antes de 31-dic-2027 (ventana "comenzar construcción antes de jul 2026" ya cerró).
+- Ley 1-2025 eliminó la meta intermedia de 40% renovable/2025 de la Ley 17-2019 (y extendió carbón a 2032).
+- 191,929 techos solares en PR (EIA abr 2026); rooftop = 2da fuente de capacidad (1,456 MW).
+- Net metering: protegido hasta 2030 (Ley 10-2024) pero demandado por la JSF en Tribunal Federal (activo).
+- Espejos: Hawaii 45% de casas con techo solar / caída -37% al matar NEM 2015; California NEM 3.0 = ventas -66% a -83%.
+
+**Casos ancla (familia del operador):** cash dic-2021 ($40-42K, 2 Powerwall, 4.5 años sin fallas, $4→$8/mes LUMA) + lease de retirada (~$40-50/mes de ahorro neto). El récord no puede fallar en su caso ancla.
+
+**Data flywheel activo:** facturas OCR + crowdsource de créditos mal acreditados ("¿LUMA no te acredita? textea SOLAR con la foto") = dataset propietario. Meta $1B path: lead marketplace → data licensing → outreach contracts.
 
 ## Kill Criteria
 

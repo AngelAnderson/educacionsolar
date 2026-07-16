@@ -98,6 +98,18 @@ export default function RootLayout({
                 Curso Gratis
               </Link>
               <Link
+                href="/datos"
+                className="hover:text-amber-300 transition-colors px-3 py-2 rounded-md"
+              >
+                El Récord
+              </Link>
+              <Link
+                href="/casos"
+                className="hover:text-amber-300 transition-colors px-3 py-2 rounded-md"
+              >
+                Casos Reales
+              </Link>
+              <Link
                 href="/guias"
                 className="hover:text-amber-300 transition-colors px-3 py-2 rounded-md"
               >
@@ -122,7 +134,7 @@ export default function RootLayout({
             <p>
               Texto{" "}
               <span className="font-bold text-amber-300">SOLAR</span> al{" "}
-              <a href="sms:7874177711?body=SOLAR" className="underline">
+              <a href="https://wa.me/17874177711?text=SOLAR" className="underline">
                 787-417-7711
               </a>
             </p>

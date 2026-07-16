@@ -225,3 +225,30 @@ Vecinoai/supabase/functions/twilio-webhook/
 ├── intent.ts                              ← SOLAR keyword detection
 └── handler.ts                             ← Routes solar_course intent
 ```
+
+---
+
+## Roadmap v2 — Récord Vertical (actualizado 2026-07-16)
+
+### Shipped hoy
+- `/datos` — El Récord Solar de PR: 7 datos verificados con fuente + 4 contradicciones DICEN/RÉCORD + bloque Mientras Tanto (escudo/palanca). Actualizar "Última verificación" en cada edición.
+- `/casos` — 2 casos reales de la familia del operador (cash 2021 + lease retirada) + la fórmula + las 7 preguntas antes de firmar.
+- Guías corregidas: cargo fijo decidido ($8→$16, NEPR-AP-2023-0003), ventana 48E (jul 2026 pasó; en servicio antes de dic 2027), pleito JSF vs Ley 10-2024.
+- Homepage: stats reales (191,929 techos / $8 cargo fijo / 13x apagones) + cards a /datos y /casos.
+
+### Próximo (en orden)
+1. **Distribución, no features.** 0 sesiones SOLAR en 3 meses = el gap es que nadie llega. Cada apagón del oeste = post caborojo.com con keyword SOLAR (ciclo 14 días del sistema v5). El deep link a /datos viaja por WhatsApp.
+2. **Crowdsource créditos mal acreditados** — el primer dato propietario: casos reales de LUMA no acreditando exceso. Cuando haya 20+ casos, es titular citable + página propia.
+3. **/apagones** — Reloj del Apagón por municipio (SAIDI/SAIFI de reportes trimestrales LUMA a PREB). Requiere minar PDFs del docket MI20190007.
+4. **Actualizar municipio pages** con data real cuando el flywheel de facturas produzca n>10 por municipio.
+5. **Caso 3: financiado** — falta el tercer camino con números reales (buscar caso documentable).
+6. **Cron de re-verificación mensual** de los datos de /datos (patrón SUTRA/hpsa-refresh: un récord con fecha stale pierde credibilidad).
+
+### Vigilancia (fechas que cambian el contenido)
+- Pleito JSF vs Ley 10-2024 (Tribunal Federal) — si cae la ley, /datos y guía net metering cambian el mismo día.
+- Escalones del cargo fijo hacia ~$16 (2027, 2028).
+- 31-dic-2027: muerte efectiva del 48E pa' sistemas no en servicio → el lease pierde su ventaja fiscal.
+- Ene-2030: PREB puede iniciar el estudio de net metering.
+
+### Regla editorial
+Mismo estándar PRSF: número + fecha + fuente con link · cero adjetivos · contradicción mostrada, no opinada · firma ALIVIO (el sitio quita peso: "no tienes que memorizar esto, haz una resta") · correcciones públicas.

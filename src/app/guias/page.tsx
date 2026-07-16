@@ -66,7 +66,7 @@ export default function GuiasPage() {
           ¿Prefieres aprender por texto?
         </p>
         <a
-          href="sms:7874177711?body=SOLAR"
+          href="https://wa.me/17874177711?text=SOLAR"
           className="inline-block bg-amber-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-amber-600 transition"
         >
           Curso Gratis: 7 Lecciones por SMS

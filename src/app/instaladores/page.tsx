@@ -87,7 +87,7 @@ export default function InstaladoresPage() {
           <li>Exclusividad por municipio disponible ($299/mes)</li>
         </ul>
         <a
-          href="sms:7874177711?body=INSTALADOR%20PARTNER"
+          href="https://wa.me/17874177711?text=INSTALADOR%20PARTNER"
           className="inline-block mt-6 bg-[#f59e0b] text-white font-semibold px-8 py-3 rounded-lg hover:bg-[#d97706] transition-colors"
         >
           Texto INSTALADOR PARTNER al 787-417-7711

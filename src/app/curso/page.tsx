@@ -76,7 +76,7 @@ export default function CursoPage() {
       <section className="bg-[#fffbeb] py-12 px-4">
         <div className="max-w-md mx-auto text-center">
           <a
-            href="sms:7874177711?body=SOLAR"
+            href="https://wa.me/17874177711?text=SOLAR"
             className="inline-block bg-[#f59e0b] text-white text-lg font-bold px-10 py-4 rounded-xl hover:bg-[#d97706] transition-colors"
           >
             Texto SOLAR al 787-417-7711

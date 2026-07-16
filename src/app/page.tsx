@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 const stats = [
-  { value: "4,500", label: "instalaciones/mes en PR" },
-  { value: "$0.27/kWh", label: "promedio LUMA" },
-  { value: "$1.5B+", label: "en incentivos federales" },
+  { value: "191,929", label: "techos solares en PR (EIA, cierre 2025)" },
+  { value: "$8/mes", label: "cargo fijo LUMA desde jul 2026 (era $4)" },
+  { value: "13x", label: "más horas sin luz que el mainland, sin contar huracanes" },
 ];
 
 export default function HomePage() {
@@ -45,6 +45,44 @@ export default function HomePage() {
               <p className="mt-1 text-gray-600 text-sm">{s.label}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Record + Casos */}
+      <section className="py-12 px-4">
+        <div className="max-w-4xl mx-auto grid sm:grid-cols-2 gap-6">
+          <Link
+            href="/datos"
+            className="block bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:border-emerald-600 transition"
+          >
+            <p className="text-sm font-semibold text-amber-600 uppercase tracking-wide">
+              Nuevo
+            </p>
+            <h3 className="mt-1 text-xl font-bold text-[#065f46]">
+              El Récord Solar de PR
+            </h3>
+            <p className="mt-2 text-gray-600 text-sm">
+              Los números que nadie junta: el cargo fijo que ya se duplicó, la
+              meta renovable que borraron, el crédito federal que murió. Cada
+              dato con fuente.
+            </p>
+          </Link>
+          <Link
+            href="/casos"
+            className="block bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:border-emerald-600 transition"
+          >
+            <p className="text-sm font-semibold text-amber-600 uppercase tracking-wide">
+              Nuevo
+            </p>
+            <h3 className="mt-1 text-xl font-bold text-[#065f46]">
+              Casos reales con números
+            </h3>
+            <p className="mt-2 text-gray-600 text-sm">
+              Un sistema pagado cash con 4.5 años sin fallas. Una retirada con
+              lease ahorrando desde el mes 1. La fórmula y las 7 preguntas
+              antes de firmar.
+            </p>
+          </Link>
         </div>
       </section>
 

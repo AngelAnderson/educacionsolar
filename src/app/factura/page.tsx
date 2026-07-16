@@ -332,7 +332,7 @@ export default function FacturaPage() {
                     <p className="font-semibold text-gray-800">Toma el curso gratis (7 lecciones por texto)</p>
                     <p className="text-sm text-gray-600">
                       Texto <strong>SOLAR</strong> al{" "}
-                      <a href="sms:7874177711?body=SOLAR" className="text-[#065f46] underline">787-417-7711</a>.
+                      <a href="https://wa.me/17874177711?text=SOLAR" className="text-[#065f46] underline">787-417-7711</a>.
                       Sin costo. Sin compromiso.
                     </p>
                   </div>
@@ -343,7 +343,7 @@ export default function FacturaPage() {
                     <p className="font-semibold text-gray-800">Habla con un instalador verificado</p>
                     <p className="text-sm text-gray-600">
                       Texto <strong>INSTALADOR</strong> al{" "}
-                      <a href="sms:7874177711?body=INSTALADOR" className="text-[#f59e0b] underline font-semibold">787-417-7711</a>.
+                      <a href="https://wa.me/17874177711?text=INSTALADOR" className="text-[#f59e0b] underline font-semibold">787-417-7711</a>.
                       Solo instaladores que hemos verificado.
                     </p>
                   </div>
