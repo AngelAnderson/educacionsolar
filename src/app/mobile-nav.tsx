@@ -5,12 +5,11 @@ import Link from "next/link";
 
 const links = [
   { href: "/", label: "Inicio" },
-  { href: "/factura", label: "Analiza tu Factura" },
-  { href: "/curso", label: "Curso Gratis" },
   { href: "/datos", label: "El Récord" },
   { href: "/casos", label: "Casos Reales" },
   { href: "/guias", label: "Guías" },
-  { href: "/instaladores", label: "Instaladores" },
+  { href: "/factura", label: "Analiza tu Factura" },
+  { href: "/curso", label: "Curso Gratis" },
 ];
 
 export function MobileNav() {

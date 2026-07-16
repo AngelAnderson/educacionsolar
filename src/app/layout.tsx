@@ -81,22 +81,7 @@ export default function RootLayout({
             <Link href="/" className="text-xl font-bold tracking-tight">
               Educación Solar
             </Link>
-            <div className="hidden md:flex gap-1 text-sm font-medium">
-              <Link href="/" className="hover:text-amber-300 transition-colors px-3 py-2 rounded-md">
-                Inicio
-              </Link>
-              <Link
-                href="/factura"
-                className="hover:text-amber-300 transition-colors px-3 py-2 rounded-md"
-              >
-                Analiza tu Factura
-              </Link>
-              <Link
-                href="/curso"
-                className="hover:text-amber-300 transition-colors px-3 py-2 rounded-md"
-              >
-                Curso Gratis
-              </Link>
+            <div className="hidden md:flex gap-1 text-sm font-medium items-center">
               <Link
                 href="/datos"
                 className="hover:text-amber-300 transition-colors px-3 py-2 rounded-md"
@@ -116,11 +101,17 @@ export default function RootLayout({
                 Guías
               </Link>
               <Link
-                href="/instaladores"
+                href="/factura"
                 className="hover:text-amber-300 transition-colors px-3 py-2 rounded-md"
               >
-                Instaladores
+                Analiza tu Factura
               </Link>
+              <a
+                href="https://wa.me/17874177711?text=SOLAR"
+                className="ml-2 bg-amber-400 text-[#065f46] font-semibold hover:bg-amber-300 transition-colors px-4 py-2 rounded-md"
+              >
+                Textea SOLAR
+              </a>
             </div>
             <MobileNav />
           </div>

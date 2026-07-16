@@ -24,6 +24,7 @@ interface ApiResponse {
   data: OcrResult;
   savings: { scenarios: SavingsScenario[] };
   confidence: number;
+  bill_id?: string;
 }
 
 type Status = "idle" | "preview" | "loading" | "results" | "error";
@@ -61,6 +62,8 @@ function getConfidenceInfo(confidence: number): { emoji: string; text: string } 
   return { emoji: "\uD83D\uDD34", text: "Baja confianza \u2014 los datos podr\u00edan no ser exactos" };
 }
 
+type LeadStatus = "idle" | "sending" | "done" | "error";
+
 export default function FacturaPage() {
   const [status, setStatus] = useState<Status>("idle");
   const [file, setFile] = useState<File | null>(null);
@@ -68,6 +71,32 @@ export default function FacturaPage() {
   const [result, setResult] = useState<ApiResponse | null>(null);
   const [error, setError] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Lead capture — el hueco que faltaba: la factura se analiza pero el número se iba sin capturar.
+  const [leadPhone, setLeadPhone] = useState("");
+  const [leadStatus, setLeadStatus] = useState<LeadStatus>("idle");
+  const [leadError, setLeadError] = useState("");
+
+  const submitLead = async () => {
+    if (!result?.bill_id) return;
+    setLeadStatus("sending");
+    setLeadError("");
+    try {
+      const res = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ bill_id: result.bill_id, phone: leadPhone }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || "No pudimos guardar tu número");
+      }
+      setLeadStatus("done");
+    } catch (err) {
+      setLeadError(err instanceof Error ? err.message : "Error inesperado");
+      setLeadStatus("error");
+    }
+  };
 
   const handleFile = useCallback((f: File) => {
     setFile(f);
@@ -130,6 +159,9 @@ export default function FacturaPage() {
     setResult(null);
     setStatus("idle");
     setError("");
+    setLeadPhone("");
+    setLeadStatus("idle");
+    setLeadError("");
   };
 
   return (
@@ -310,8 +342,60 @@ export default function FacturaPage() {
               })}
             </div>
 
+            {/* Lead capture \u2014 captura el n\u00famero EN la p\u00e1gina, en el momento de mayor intenci\u00f3n */}
+            {result.bill_id && (
+              <div className="mt-8 bg-white rounded-xl p-6 border-2 border-emerald-300 shadow-sm">
+                {leadStatus === "done" ? (
+                  <div className="text-center">
+                    <p className="text-2xl mb-1">\u2705</p>
+                    <p className="font-bold text-[#065f46]">
+                      Listo. Te avisamos.
+                    </p>
+                    <p className="text-sm text-gray-600 mt-1">
+                      Cuando cambie algo en tu factura o tengamos un instalador
+                      verificado en tu \u00e1rea, te escribimos. Sin spam.
+                    </p>
+                  </div>
+                ) : (
+                  <>
+                    <h2 className="text-lg font-bold text-[#065f46] mb-1">
+                      \u00bfTe aviso cuando cambie algo?
+                    </h2>
+                    <p className="text-sm text-gray-600 mb-4">
+                      Tu cargo fijo, tus incentivos, tu net metering \u2014 todo se
+                      est\u00e1 moviendo. D\u00e9jame tu WhatsApp y te aviso cuando pase
+                      algo que te afecte. No te llamamos ni vendemos nada.
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <input
+                        type="tel"
+                        inputMode="tel"
+                        placeholder="787-555-1234"
+                        value={leadPhone}
+                        onChange={(e) => setLeadPhone(e.target.value)}
+                        className="flex-1 border border-gray-300 rounded-lg px-4 py-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                      />
+                      <button
+                        onClick={submitLead}
+                        disabled={leadStatus === "sending" || leadPhone.trim().length < 7}
+                        className="bg-[#065f46] text-white font-semibold px-6 py-3 rounded-lg hover:bg-[#064e3b] transition-colors disabled:opacity-50"
+                      >
+                        {leadStatus === "sending" ? "Guardando..." : "Av\u00edsame"}
+                      </button>
+                    </div>
+                    {leadError && (
+                      <p className="mt-2 text-sm text-red-600">{leadError}</p>
+                    )}
+                    <p className="mt-2 text-xs text-gray-400">
+                      Solo n\u00fameros de PR (787 o 939). Tu n\u00famero es privado.
+                    </p>
+                  </>
+                )}
+              </div>
+            )}
+
             {/* Section 3: Qu\u00e9 hago ahora */}
-            <div className="mt-10 bg-[#ecfdf5] rounded-xl p-6">
+            <div className="mt-8 bg-[#ecfdf5] rounded-xl p-6">
               <h2 className="text-xl font-bold text-[#065f46] mb-4">
                 \u00bfQu\u00e9 hago ahora?
               </h2>
@@ -357,7 +441,7 @@ export default function FacturaPage() {
                 Lo que NO te van a decir
               </h2>
               <ul className="space-y-2 text-sm text-gray-600">
-                <li>\u2022 Tu cargo fijo de LUMA ($4-15/mes) <strong>NO desaparece</strong> con solar</li>
+                <li>\u2022 Tu cargo fijo de LUMA ($8/mes desde jul 2026, sube a ~$16 en 2028) <strong>NO desaparece</strong> con solar</li>
                 <li>\u2022 Necesitas <strong>permiso de LUMA</strong> para conectarte \u2014 sin permiso, te desconectan</li>
                 <li>\u2022 Los paneles se degradan ~0.5% por a\u00f1o \u2014 en 25 a\u00f1os producen ~12% menos</li>
                 <li>\u2022 Si tu techo necesita reparaci\u00f3n, h\u00e1zla <strong>antes</strong> de instalar paneles</li>
